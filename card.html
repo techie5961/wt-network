@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master-card</title>
+    <style>
+        *
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    overflow: hidden;
+}
+
+section
+{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: #0e030f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    perspective: 1000px;
+}
+
+section::before
+{
+    content: '';
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    transform: translate(-150px,-100px);
+    background: linear-gradient(90deg,purple,white);
+    
+}
+
+section::after
+{
+    content: '';
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    transform: translate(150px,100px);
+    background: linear-gradient(0deg,purple,white);
+    
+}
+
+.container
+{
+    position: relative;
+    height: 230px;
+    width: 370px;
+    z-index: 100;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+}
+
+.container:hover
+{
+    transform: rotateY(180deg);
+}
+
+.container .card
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 25px;
+    backdrop-filter: blur(35px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 10px 40px 55px rgb(4, 27, 129);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backface-visibility: hidden;
+}
+
+.front-face header,
+.front-face .logo
+{
+    display: flex;
+    align-items: center;
+
+}
+
+.front-face header
+{
+    justify-content: space-between;
+}
+
+.container .front-face .logo img
+{
+    width: 70px;
+    height: 50px;
+    margin-right: 10px;
+}
+h5
+{
+    font-size: 15px;
+    font-weight: 600;
+
+}
+
+.front-face .chip
+{
+    width: 50px;
+}
+
+.front-face .card-detail
+{
+    margin-top: 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+h6
+{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h5.number
+{
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+h5.name
+{
+    margin-top: 20px;
+}
+
+.card.back-face
+{
+    border: none;
+    padding: 12px 22px 22px 22px;
+    transform: rotateY(180deg);
+
+}
+
+.card.back-face h6
+{
+    font-size: 9px;
+}
+
+.card.back-face .magnetic-strip
+{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    height: 45px;
+    width: 100%;
+    background: #000000;
+}
+
+.card.back-face .signature
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 80px;
+    height: 40px;
+    width: 85%;
+    border-radius: 6px;
+    background: repeating-linear-gradient(
+        #fff,
+        #fff 3px,
+        #d8d9d9 0px,
+        #d8d9d9 9px
+        );
+}
+
+.signature i
+{
+    color: #000000;
+    font-size: 15px;
+    padding: 5px 7px;
+    border-radius: 4px;
+    background: #ffffff;
+    margin-right: -32px;
+    z-index: -1;
+}
+
+.card.back-face h5{
+    font-size: 10px;
+    margin-top: 15px;
+}
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="card front-face">
+                <header>
+                    <span class="logo">
+                        <img src="images/master-card.jpeg" alt=" ">
+                        <h5>Master Card</h5>
+                    </span>
+                    <img src="images/chip-logo.png" class="chip">
+                </header>
+
+                <div class="card-detail">
+                    <div class="name-number">
+                        <h6>
+                            Card Number
+                        </h6>
+                        <h5 class="number">
+                            5350 2040 5492 3007
+                        </h5>
+                        <h5 class="name">
+                            Spanking Solutions
+                        </h5>
+                    </div>
+                    <div class="valid-date">
+                        <h6>Valid Thur</h6>
+                        <h5>05/28</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card back-face">
+              <h6>For customer service call +92 319 2171807 
+                or email at admin@spankingsolutions.com</h6>
+                <span class="magnetic-strip"></span>
+            <div class="signature">
+                <i>005</i>
+            </div>
+            <h5>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                 Quia sed sit excepturi cum autem provident iste laborum 
+                 vitae dolor labore nemo ipsa eius, placeat adipisci 
+                 explicabo voluptas? Veritatis, deserunt repudiandae?
+            </h5>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
