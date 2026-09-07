@@ -101,15 +101,15 @@
                 <div class="cont">
                     <select name="vip_level" class="inp input required">
                         <option value="">Click to choose...</option>
-                        <option {{ $data->vip_level == 'regular' ? 'selected' ? '' }} value="regular">Regular</option>
-                        <option {{ $data->vip_level == 'vip 1' ? 'selected' ? '' }} value="vip 1">VIP 1</option>
-                        <option {{ $data->vip_level == 'vip 2' ? 'selected' ? '' }} value="vip 2">VIP 2</option>
-                        <option {{ $data->vip_level == 'vip 3' ? 'selected' ? '' }} value="vip 3">VIP 3</option>
-                        <option {{ $data->vip_level == 'vip 4' ? 'selected' ? '' }} value="vip 4">VIP 4</option>
-                        <option {{ $data->vip_level == 'vip 5' ? 'selected' ? '' }} value="vip 5">VIP 5</option>
-                        <option {{ $data->vip_level == 'vip 6' ? 'selected' ? '' }} value="vip 6">VIP 6</option>
-                        <option {{ $data->vip_level == 'vip 7' ? 'selected' ? '' }} value="vip 7">VIP 7</option>
-                        <option {{ $data->vip_level == 'vip 8' ? 'selected' ? '' }} value="vip 8">VIP 8</option>
+                        <option {{ $data->vip_level == 'regular' ? 'selected' : '' }} value="regular">Regular</option>
+                        <option {{ $data->vip_level == 'vip 1' ? 'selected' : '' }} value="vip 1">VIP 1</option>
+                        <option {{ $data->vip_level == 'vip 2' ? 'selected' : '' }} value="vip 2">VIP 2</option>
+                        <option {{ $data->vip_level == 'vip 3' ? 'selected' : '' }} value="vip 3">VIP 3</option>
+                        <option {{ $data->vip_level == 'vip 4' ? 'selected' : '' }} value="vip 4">VIP 4</option>
+                        <option {{ $data->vip_level == 'vip 5' ? 'selected' : '' }} value="vip 5">VIP 5</option>
+                        <option {{ $data->vip_level == 'vip 6' ? 'selected' : '' }} value="vip 6">VIP 6</option>
+                        <option {{ $data->vip_level == 'vip 7' ? 'selected' : '' }} value="vip 7">VIP 7</option>
+                        <option {{ $data->vip_level == 'vip 8' ? 'selected' : '' }} value="vip 8">VIP 8</option>
                     </select>
                 </div>
             </div>
