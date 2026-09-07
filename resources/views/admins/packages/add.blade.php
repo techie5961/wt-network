@@ -65,7 +65,7 @@
                     <small class="opacity-07">The amount earned daily on this Product(in ₦)</small>
                 </label>
                 <div class="cont">
-                    <input name="earning" placeholder="E.g ₦500" type="number" class="inp input required">
+                    <input name="earning" placeholder="E.g ₦500" step="any" type="number" class="inp input required">
                 </div>
             </div>
              {{-- new input --}}

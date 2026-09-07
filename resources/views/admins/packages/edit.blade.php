@@ -69,7 +69,7 @@
                     <small class="opacity-07">The amount earned daily on this Product(in ₦)</small>
                 </label>
                 <div class="cont">
-                    <input value="{{ $data->earning }}" name="earning" placeholder="E.g ₦500" type="number" class="inp input required">
+                    <input value="{{ $data->earning }}" step="any" name="earning" placeholder="E.g ₦500" type="number" class="inp input required">
                 </div>
             </div>
              {{-- new input --}}
