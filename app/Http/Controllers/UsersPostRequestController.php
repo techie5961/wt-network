@@ -863,7 +863,7 @@ class UsersPostRequestController extends Controller
                 ]);
         }
         
-            $response=Http::withToken(env('ASPFIY_SECRET_KEY'))->post('https://api-v1.aspfiy.com/reserve-paga/',[
+            $response=Http::timeout(30)->withToken(env('ASPFIY_SECRET_KEY'))->post('https://api-v1.aspfiy.com/reserve-paga/',[
                 'email' => trim(request('email')),
                 'reference' => GenerateID(),
                 'firstName' => trim(request('first_name')),

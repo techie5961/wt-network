@@ -10,17 +10,17 @@
             @isset(Auth::guard('users')->user()->paga_account)
                  {{-- new column --}}
             <div class="column max-w-500">
-                <strong class="desc font-weight-900">Bank details</strong>
+                <strong class="desc font-weight-900">Bank Details</strong>
                 <span class="opacity-07">Transfer money into the bank details below to recharge your account.</span>
             </div>
-              <div class="w-full bg-light column align-center br-10px box-shadow p-15px">
+              <div class="w-full bg-black-transparent border-width-1px border-style-solid border-color-primary-05 p-15px br-15px">
                 {{-- <img src="{{ asset('banners/IMG_7922.png?v=1.1') }}" alt="" class="w-100px"> --}}
 
                {{-- new --}}
-               <div class="w-full g-5px br-5px border-bottom-width-1px border-bottom-color-rgt-01 border-bottom-style-dashed p-10px column">
-               <span class="opacity-05 font-size-07">Account Number</span>
+               <div class="w-full g-5px br-5px border-bottom-width-1px border-bottom-color-primary-05 border-bottom-style-dashed p-10px column">
+               <span class="opacity-07 font-size-07">Account Number</span>
                <div class="row align-center g-10px">
-               <strong class="font-size-1 font-weight-700">{{ json_decode(Auth::guard('users')->user()->paga_account)->account_number }}</strong>
+               <strong class="font-size-1 font-weight-900">{{ json_decode(Auth::guard('users')->user()->paga_account)->account_number }}</strong>
                 <span x-data="{ 
                     Copied : false
                  }" class="c-primary-light">
@@ -37,56 +37,61 @@
                </div>
             </div>
                   {{-- new --}}
-               <div class="w-full br-5px g-5px border-bottom-width-1px border-bottom-color-rgt-01 border-bottom-style-dashed p-10px column">
-               <span class="opacity-05 font-size-07">Bank</span>
+               <div class="w-full br-5px g-5px border-bottom-width-1px border-bottom-color-primary-05 border-bottom-style-dashed p-10px column">
+               <span class="opacity-07 font-size-07">Bank</span>
                <div class="row align-center g-5px">
                 <img src="{{ asset('banners/IMG_7927.png') }}" alt="" class="w-20px">
-               <strong class="font-size-1 font-weight-700">{{ json_decode(Auth::guard('users')->user()->paga_account)->bank_name }}</strong>
+               <strong class="font-size-1 font-weight-900">{{ json_decode(Auth::guard('users')->user()->paga_account)->bank_name }}</strong>
 
                </div>
                </div>
                  {{-- new --}}
                <div class="w-full br-5px g-5px p-10px column">
-               <span class="opacity-05 font-size-07">Account Name</span>
-               <strong class="font-size-1 font-weight-700">{{ json_decode(Auth::guard('users')->user()->paga_account)->account_name }}</strong>
+               <span class="opacity-07 font-size-07">Account Name</span>
+               <strong class="font-size-1 font-weight-900">{{ json_decode(Auth::guard('users')->user()->paga_account)->account_name }}</strong>
                </div>
-               <div class="hr" vitecss-type="dotted"></div>
-               <small class="opacity-07 m-top-5px text-center">Your account is automatically funded upon making a successfull transfer</small>
+               <div style="border-color:var(--primary)" class="hr" vitecss-type="dotted"></div>
+               <small class="opacity-07  block m-top-5px text-align-center">Your account is automatically funded upon making a successfull transfer</small>
               </div>
             @else
             {{-- new column --}}
             <div class="column w-full max-w-500 m-x-auto">
-                <strong class="desc font-weight-900">Create your bank account</strong>
-                <span class="opacity-07">Fill the form below to create your payment bank account</span>
+                <strong class="desc font-weight-900">Generate your account number</strong>
+                <span class="opacity-07">Enter the details below so we can generate your unique bank details for deposits</span>
             </div>
-              <form method="POST" action="{{ url('users/post/generate/paga/account/process') }}" onsubmit="PostRequest(event,this,Updated)" class="analytics p-20px column br-10px box-shadow w-full bg-light max-w-500 m-x-auto column g-10">
+              <form method="POST" action="{{ url('users/post/generate/paga/account/process') }}" x-on:submit="PostRequest($event,$el,function(response){
+           let data=JSON.parse(response);
+            if(data.status == 'success'){
+                Redirect('{{ url()->current() }}');
+            }
+        })" class="column w-full bg-black-transparent g-10px border-width-1px border-style-solid border-color-primary-05 br-15px p-15px">
                <div class="column w-full align-center g-10 justify-center">
             </div>
                 {{-- csrf token --}}
                <input type="hidden" class="input inp required" name="_token" value="{{ @csrf_token() }}">
                 {{-- new input --}}
                 <div class="column g-5 w-full">
-                 <label>Enter First Name</label>
+                 <label>First Name</label>
                 <div class="cont">
                     <input name="first_name" placeholder="First name" type="text" class="inp input required">
                 </div>
                </div>
                {{-- new input --}}
                 <div class="column g-5 w-full">
-                 <label>Enter Last Name</label>
+                 <label>Last Name</label>
                 <div class="cont">
                     <input name="last_name" placeholder="Last name" type="text" class="inp input required">
                 </div>
                </div>
                {{-- new input --}}
                 <div class="column g-5 w-full">
-                 <label>Enter Email Address</label>
+                 <label>Email Address</label>
                 <div class="cont">
-                    <input name="email" placeholder="Email address" type="email" class="inp input required">
+                    <input value="{{ Auth::guard('users')->user()->email }}" name="email" placeholder="Email address" type="email" class="inp input required">
                 </div>
                </div>
                 
-             <button class="post">Create my account</button>
+               <button style="background:linear-gradient(to bottom,var(--primary-light),var(--primary-dark));border:1px solid var(--primary-light);height:40px;" class="post">Generate My Account</button>
             </form>
             @endisset
           
@@ -97,8 +102,8 @@
              
 
               {{-- new div --}}
-            <div class="column w-full bg-light br-10 g-10 p-20">
-                <strong class="font-1 font-weight-800">Recharge Instructions</strong>
+            <div class="w-full br-15px p-15px bg-black-transparent border-width-1px border-style-solid border-color-primary-05 column g-10px">
+                <strong class="font-1 font-weight-900">Recharge Instructions</strong>
                
                  {{-- new row --}}
                 <div class="row g-5">
@@ -134,14 +139,4 @@
     </section>
 
     
-@endsection
-@section('js')
-    <script class="js">
-        function Updated(response){
-            let data=JSON.parse(response);
-            if(data.status == 'success'){
-                Redirect('{{ url()->current() }}');
-            }
-        }
-    </script>
 @endsection

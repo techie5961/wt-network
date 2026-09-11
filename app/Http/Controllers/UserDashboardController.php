@@ -157,7 +157,7 @@ class UserDashboardController extends Controller
     public function Recharge(){
         $gateways=collect((array) json_decode(file_get_contents(database_path('data/gateways.json')))->deposit)
     ->filter(fn ($status) => $status === 'active');
-        return view('users.recharge.general',[
+        return view('users.recharge.aspfiy',[
             'gateways' => $gateways,
             'packages' => DB::table('packages')->where('status','active')->orderBy('cost','asc')->limit(9)->get()
         ]);
